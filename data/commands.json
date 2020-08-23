@@ -1,0 +1,14 @@
+[
+    {
+        "name":"ayuda",
+        "short":"?",
+        "description":"Ver la lista de comandos y su uso",
+        "cooldown":5
+    },
+    {
+        "name":"inspeccion",
+        "short":"pito",
+        "description":"Ver el tamaño de tu pichula",
+        "cooldown":5
+    }
+]

@@ -1,14 +1,44 @@
 [
-    {
-        "name":"ayuda",
-        "short":"?",
-        "description":"Ver la lista de comandos y su uso",
-        "cooldown":5
-    },
-    {
-        "name":"inspeccion",
-        "short":"pito",
-        "description":"Ver el tamaño de tu pichula",
-        "cooldown":5
-    }
+  {
+    "name": "ayuda",
+    "short": "?",
+    "description": "Ver la lista de comandos y su uso",
+    "cooldown": 5
+  },
+  {
+    "name": "inspeccion",
+    "short": "pito",
+    "description": "Ver el tamaño de tu pichula",
+    "cooldown": 5
+  },
+  {
+    "name": "AAA",
+    "short": "vipito",
+    "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAA",
+    "cooldown": 5
+  },
+  {
+    "name": "BUENASNOCHES",
+    "short": "AMERICA",
+    "description": "BUENAS NOCHES AMERICA",
+    "cooldown": 5
+  },
+  {
+    "name": "ecsilud",
+    "short": "nv",
+    "description": "Exitlude de los quilers uwu~",
+    "cooldown": 5
+  },
+  {
+    "name": "impressive",
+    "short": "gancho",
+    "description": "Para cuando pones _ese_ gancho de Pudge",
+    "cooldown": 5
+  },
+  {
+    "name": "NIUM",
+    "short": "gyro",
+    "description": "NIUUUUUUUUUUUUUUUUUUUUUUUUUUM",
+    "cooldown": 5
+  }
 ]

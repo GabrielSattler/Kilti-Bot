@@ -5,25 +5,35 @@ const config = require("../config.json");
 const ytdl = require('ytdl-core');
 
 const cmdList = require("./commands.json");
+const ff = require('./ff.json')
 
 const playSound = async (msg, audio) => {
   if (audio == null) return false;
-  
-  if(msg.member.voice.channel != null){
-    let voiceChannel = msg.member.voice.channel;
-      voiceChannel
-        .join()
-        .then(connection => {
-          const dispatcher = connection.play( audio );
 
-          dispatcher.on("finish", end => {
-            voiceChannel.leave();
-            console.log("Successfully played a sound.");
-          });
-        })
-        .catch(err => console.log(err));
+  if (msg.member.voice.channel.joinable) {
+    let voiceChannel = msg.member.voice.channel;
+    voiceChannel
+      .join()
+      .then(connection => {
+        const dispatcher = connection.play(audio);
+
+        dispatcher.on("finish", end => {
+          voiceChannel.leave();
+          console.log("Successfully played a sound.");
+        });
+      })
+      .catch(err => console.log(err));
+  }
+  else {
+    msg.channel.send(`No me puedo unir a tu canal de voz imbécil`);
   }
 };
+
+const Random = async (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is exclusive and the minimum is inclusive
+}
 
 module.exports = {
   ayuda: async msg => {
@@ -45,7 +55,7 @@ module.exports = {
     let user = msg.mentions.users.first() != null ? msg.mentions.users.first() : msg.author;
     let com = "Lorem ipsum";
     let tula;
-    if(msg.mentions.users.first())
+    if (msg.mentions.users.first())
       tula = msg.mentions.users.first().tag.split("#")[1] / 100;
     else
       tula = msg.author.tag.split("#")[1] / 100;
@@ -77,16 +87,62 @@ module.exports = {
   BUENASNOCHES: async msg => {
     playSound(msg, "https://cdn.glitch.com/72701dbe-95f1-4736-8882-b638e47d30d5%2FBUENAS%20NOCHES%20AMERICA.mp3?v=1598219246188");
   },
-  
-  ecsilud : async msg => {
+
+  ecsilud: async msg => {
     playSound(msg, "https://cdn.glitch.com/72701dbe-95f1-4736-8882-b638e47d30d5%2FExitlude.mp3?v=1598235233072");
   },
-  
-  impressive : async msg => {
+
+  impressive: async msg => {
     playSound(msg, "https://cdn.glitch.com/72701dbe-95f1-4736-8882-b638e47d30d5%2FImpressive.mp3?v=1598250293667");
   },
-  
-  NIUM : async msg => {
+
+  NIUM: async msg => {
     playSound(msg, "https://cdn.glitch.com/72701dbe-95f1-4736-8882-b638e47d30d5%2Fnium.mp3?v=1598253794115");
+  },
+
+  votekilti: async msg => {
+    const filter = (reaction, user) => {
+      return reaction.emoji.name === '✅' && !user.bot;
+    }
+
+    let user = msg.mentions.users.first() != null ? msg.mentions.users.first() : null;
+    if (user == null) {
+      msg.channel.send(`Tenes que etiquetar un usuario kpo`);
+      return false;
+    }
+
+    const embed = new Discord.MessageEmbed()
+      .setColor(0xffff00)
+      .setThumbnail(user.avatarURL)
+      .setTitle(`VOTEKILTI`)
+      .addField(`Si ${user.username} tiene el pito chico vota ✅`, `Si no tiene el pito chico vota ❌`, false)
+      .setThumbnail(user.avatarURL())
+
+    msg.channel.send(embed)
+      .then((msg) => {
+        msg.react('✅')
+        msg.awaitReactions(filter, { max: 1, time: 7500, errors: ['time'] })
+          .then(collected => {
+            console.log(collected);
+            msg.channel.send(`<@${user.id}> TIENE LA PICHULA CHICA`)
+          })
+          .catch(collected => console.log(`After 7.5 seconds, only ${collected.size} out of 2 reacted`))
+      })
+
+    return false;
+  },
+
+  fanfi: async msg => {
+    let rng = await Random(0, ff.length);
+    let text = await ff[rng];
+
+    const embed = new Discord.MessageEmbed()
+      .setColor(0x00ff00)
+      .setAuthor(`Geilty Fanfic`, `https://cdn.discordapp.com/avatars/746974782653988924/a72e318ccda9ef9564b65bb5f7c4ba4c.png?size=4096`)
+      .setTitle(`Geilty, 69:${rng}`)
+      .addField(`${text.frase}`, `By zafire공산#8600`, false)
+      .setThumbnail(`https://cdn.discordapp.com/avatars/746974782653988924/a72e318ccda9ef9564b65bb5f7c4ba4c.png?size=4096`)
+
+    msg.channel.send(embed)
   }
 };

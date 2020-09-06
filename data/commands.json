@@ -40,5 +40,17 @@
     "short": "gyro",
     "description": "NIUUUUUUUUUUUUUUUUUUUUUUUUUUM",
     "cooldown": 5
+  },
+  {
+    "name": "votekilti",
+    "short": "BAN",
+    "description": "Voto para aplicarle un votekilti a quien voce quiera",
+    "cooldown": 5
+  },
+  {
+    "name": "fanfi",
+    "short": "ff",
+    "description": "Linea random del fanfic ofisial by Sofafi™",
+    "cooldown": 5
   }
 ]

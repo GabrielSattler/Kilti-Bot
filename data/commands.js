@@ -133,16 +133,13 @@ module.exports = {
   },
 
   fanfi: async msg => {
-    let rng = await Random(0, ff.length);
-    let text = await ff[rng];
+    let ffID = await Random(0, ff.length - 1);
+    let fraseID = await Random(0, ff[ffID].length);
+    console.log(`${ffID} : ${fraseID}`);
+    let text = await ff[ffID][fraseID].frase;
 
-    const embed = new Discord.MessageEmbed()
-      .setColor(0x00ff00)
-      .setAuthor(`Geilty Fanfic`, `https://cdn.discordapp.com/avatars/746974782653988924/a72e318ccda9ef9564b65bb5f7c4ba4c.png?size=4096`)
-      .setTitle(`Geilty, 69:${rng}`)
-      .addField(`${text.frase}`, `By zafire공산#8600`, false)
-      .setThumbnail(`https://cdn.discordapp.com/avatars/746974782653988924/a72e318ccda9ef9564b65bb5f7c4ba4c.png?size=4096`)
+    let message = `**Geilty Fanfic** *Tomo ${ffID}:${fraseID}*\n> ${text}\n*By zafire 공산#8600*`;
 
-    msg.channel.send(embed)
+    msg.channel.send(message)
   }
 };

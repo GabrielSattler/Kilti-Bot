@@ -8,6 +8,14 @@ const commands = require("./data/commands.js");
 bot.login(config.token);
 
 bot.on("ready", () => {
+  bot.user.setPresence({
+    status: 'online',
+    activity: {
+      name: 'k ?',
+      type: "STREAMING",
+      url: "https://theuselessweb.com/"
+    }
+  })
   console.log("Done loading.");
 });
 
@@ -19,10 +27,10 @@ bot.on("message", message => {
   )
     return;
 
-  let args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  let args = message.content.slice(config.prefix.length).trim().split("\\b");
   let cmd = args.shift();
 
-  if(cmd != null || cmd != ""){
+  if (cmd != null || cmd != "") {
     checkCommand(cmd, message, args);
   } else {
     console.log("Problema con comando");
@@ -46,6 +54,5 @@ const checkCommand = async (cmd, msg, args = "") => {
     return false;
   } catch (err) {
     console.log(err);
-    msg.channel.send(`Ese comando no existe, tirate un ***k ?*** y dejate de joder`);
   }
 };

@@ -16,7 +16,7 @@ bot.on("ready", () => {
       url: "https://theuselessweb.com/"
     }
   })
-  console.log("Done loading v2.1");
+  console.log("Done loading v3");
 });
 
 bot.on("message", message => {

@@ -21,12 +21,13 @@
   },
   "homepage": "",
   "dependencies": {
+    "@discordjs/opus": "github:discordjs/opus",
     "discord.js": "^12.3.1",
     "enmap": "^5.7.0",
-    "node-opus": "^0.3.3",
-    "@discordjs/opus": "^0.3.2",
     "ffmpeg": "^0.0.4",
+    "ffmpeg-static": "^4.2.7",
     "fluent-ffmpeg": "^2.1.2",
+    "node-opus": "^0.3.3",
     "ytdl-core": "^3.2.2"
   }
 }

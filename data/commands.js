@@ -1,21 +1,29 @@
 const Discord = require("discord.js");
 const main = require("../index.js");
 const config = require("../config.json");
+const fs = require("fs");
 
 const ytdl = require('ytdl-core');
 
-const cmdList = require("./commands.json");
+const cmdList = require('./commands.json');
 const ff = require('./ff.json')
 
 const playSound = async (msg, audio) => {
   if (audio == null) return false;
+
+  try {
+    if (!fs.existsSync(`./sounds/${audio}`)) {
+      msg.channel.send(`No existe ese archivo`)
+      return false;
+    }
+  } catch (err) { console.log(err); }
 
   if (msg.member.voice.channel.joinable) {
     let voiceChannel = msg.member.voice.channel;
     voiceChannel
       .join()
       .then(connection => {
-        const dispatcher = connection.play(audio);
+        const dispatcher = connection.play(`./sounds/${audio}`);
 
         dispatcher.on("finish", end => {
           voiceChannel.leave();
@@ -81,23 +89,31 @@ module.exports = {
   },
 
   AAA: async msg => {
-    playSound(msg, "https://cdn.glitch.com/72701dbe-95f1-4736-8882-b638e47d30d5%2Fviper.mp3?v=1598174251718");
+    playSound(msg, 'viper.mp3');
   },
 
   BUENASNOCHES: async msg => {
-    playSound(msg, "https://cdn.glitch.com/72701dbe-95f1-4736-8882-b638e47d30d5%2FBUENAS%20NOCHES%20AMERICA.mp3?v=1598219246188");
+    playSound(msg, 'buenasnoches.mp3');
   },
 
   ecsilud: async msg => {
-    playSound(msg, "https://cdn.glitch.com/72701dbe-95f1-4736-8882-b638e47d30d5%2FExitlude.mp3?v=1598235233072");
+    playSound(msg, 'exitlude.mp3');
   },
 
   impressive: async msg => {
-    playSound(msg, "https://cdn.glitch.com/72701dbe-95f1-4736-8882-b638e47d30d5%2FImpressive.mp3?v=1598250293667");
+    playSound(msg, 'impressive.mp3');
   },
 
   NIUM: async msg => {
-    playSound(msg, "https://cdn.glitch.com/72701dbe-95f1-4736-8882-b638e47d30d5%2Fnium.mp3?v=1598253794115");
+    playSound(msg, 'gyrocopter.mp3');
+  },
+
+  yoda: async msg => {
+    playSound(msg, "Lego yoda death sound.mp3");
+  },
+
+  kulikitaka: async msg => {
+    playSound(msg, "kulikitaka.mp3");
   },
 
   votekilti: async msg => {
@@ -115,7 +131,7 @@ module.exports = {
       .setColor(0xffff00)
       .setThumbnail(user.avatarURL)
       .setTitle(`VOTEKILTI`)
-      .addField(`Si ${user.username} tiene el pito chico vota ✅`, `Si no tiene el pito chico vota ❌`, false)
+      .addField(`Si ${user.username} tiene el pito chico vota ✅`, `jaja meme`, false)
       .setThumbnail(user.avatarURL())
 
     msg.channel.send(embed)
@@ -141,5 +157,9 @@ module.exports = {
     let message = `**Geilty Fanfic** *Tomo ${ffID}:${fraseID}*\n> ${text}\n*By zafire 공산#8600*`;
 
     msg.channel.send(message)
+  },
+
+  source: async msg => {
+    msg.channel.send(`El source esta en https://github.com/GabrielSattler/Kilti-Bot salu3`);
   }
 };

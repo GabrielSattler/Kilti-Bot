@@ -52,5 +52,23 @@
     "short": "ff",
     "description": "Linea random del fanfic ofisial by Sofafi™",
     "cooldown": 5
+  },
+  {
+    "name": "yoda",
+    "short": "morido",
+    "description": "Lego_Yoda_Death_Sound.mp3",
+    "cooldown": 5
+  },
+  {
+    "name": "source",
+    "short": "git",
+    "description": "Git publico con el source code del bot",
+    "cooldown": 5
+  },
+  {
+    "name": "kulikitaka",
+    "short": "TAKATIKI",
+    "description": "KULIKITAKA TI KULIKITAKA TA",
+    "cooldown": 5
   }
 ]

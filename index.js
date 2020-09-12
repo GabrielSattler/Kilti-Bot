@@ -27,8 +27,13 @@ bot.on("message", message => {
   )
     return;
 
-  let args = message.content.slice(config.prefix.length).trim().split("\\b");
+  let args = message.content.slice(config.prefix.length).trim().split(' ');
   let cmd = args.shift();
+
+  let d = new Date();
+  console.log(
+    `[${d.getDay()}/${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}] User ${message.author.tag} sent a request for "${cmd}" with "${args}" arguments.`
+  );
 
   if (cmd != null || cmd != "") {
     checkCommand(cmd, message, args);
@@ -39,14 +44,11 @@ bot.on("message", message => {
 
 const checkCommand = async (cmd, msg, args = "") => {
   try {
-    for (let i = 0; cmdList.length; i++) {
+    for (let i = 0; i < cmdList.length; i++) {
       if (
-        cmdList[i].name.toLowerCase() == cmd ||
-        cmdList[i].short.toLowerCase() == cmd
+        cmdList[i].name.toLowerCase() === cmd ||
+        cmdList[i].short.toLowerCase() === cmd
       ) {
-        console.log(
-          `User ${msg.author.username} sent a request for "${cmd}" with "${msg}" arguments.`
-        );
         let response = await commands[cmdList[i].name](msg, args);
         return true;
       }

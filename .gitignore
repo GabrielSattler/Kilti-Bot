@@ -3715,3 +3715,5 @@ node_modules/typedarray/package.json
 node_modules/typedarray/readme.markdown
 node_modules/typedarray/test/server/undef_globals.js
 node_modules/typedarray/test/tarray.js
+sounds/laconchadea.mp3
+sounds/oof.mp3

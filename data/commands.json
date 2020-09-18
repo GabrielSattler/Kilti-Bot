@@ -3,72 +3,112 @@
     "name": "ayuda",
     "short": "?",
     "description": "Ver la lista de comandos y su uso",
-    "cooldown": 5
+    "cooldown": 2500,
+    "category": ""
   },
   {
     "name": "inspeccion",
     "short": "pito",
     "description": "Ver el tamaño de tu pichula",
-    "cooldown": 5
+    "cooldown": 5000,
+    "category": "fun"
   },
   {
-    "name": "AAA",
+    "name": "aaa",
     "short": "vipito",
     "description": "AAAAAAAAAAAAAAAAAAAAAAAAAAA",
-    "cooldown": 5
+    "cooldown": 7500,
+    "category": "sound"
   },
   {
-    "name": "BUENASNOCHES",
-    "short": "AMERICA",
+    "name": "buenasnoches",
+    "short": "america",
     "description": "BUENAS NOCHES AMERICA",
-    "cooldown": 5
+    "cooldown": 7500,
+    "category": "sound"
   },
   {
     "name": "ecsilud",
     "short": "nv",
     "description": "Exitlude de los quilers uwu~",
-    "cooldown": 5
+    "cooldown": 7500,
+    "category": "sound"
   },
   {
     "name": "impressive",
     "short": "gancho",
-    "description": "Para cuando pones _ese_ gancho de Pudge",
-    "cooldown": 5
+    "description": "Para cuando pones ese gancho de Pudge",
+    "cooldown": 7500,
+    "category": "sound"
   },
   {
-    "name": "NIUM",
+    "name": "nium",
     "short": "gyro",
     "description": "NIUUUUUUUUUUUUUUUUUUUUUUUUUUM",
-    "cooldown": 5
+    "cooldown": 7500,
+    "category": "sound"
   },
   {
     "name": "votekilti",
-    "short": "BAN",
+    "short": "ban",
     "description": "Voto para aplicarle un votekilti a quien voce quiera",
-    "cooldown": 5
+    "cooldown": 10000,
+    "category": "fun"
   },
   {
     "name": "fanfi",
     "short": "ff",
     "description": "Linea random del fanfic ofisial by Sofafi™",
-    "cooldown": 5
+    "cooldown": 5000,
+    "category": "fun"
   },
   {
     "name": "yoda",
     "short": "morido",
-    "description": "Lego_Yoda_Death_Sound.mp3",
-    "cooldown": 5
+    "description": "LegoYodaDeathSound.mp3",
+    "cooldown": 7500,
+    "category": "sound"
   },
   {
     "name": "source",
     "short": "git",
     "description": "Git publico con el source code del bot",
-    "cooldown": 5
+    "cooldown": 10000,
+    "category": "extra"
   },
   {
     "name": "kulikitaka",
-    "short": "TAKATIKI",
+    "short": "takatiki",
     "description": "KULIKITAKA TI KULIKITAKA TA",
-    "cooldown": 5
+    "cooldown": 5000,
+    "category": "sound"
+  },
+  {
+    "name": "tpa",
+    "short": "tp",
+    "description": "Solicitud de tp del maincra",
+    "cooldown": 10000,
+    "category": "fun"
+  },
+  {
+    "name": "lacon",
+    "short": "dva",
+    "description": "Hmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",
+    "cooldown": 7500,
+    "category": "sound"
+  },
+  {
+    "name": "cuidado",
+    "short": "bicho",
+    "description": "C U I D A D O  C O N  E L  B I C H O",
+    "cooldown": 7500,
+    "category": "fun"
+  },
+  {
+    "name": "regalo",
+    "short": "sorpresa",
+    "description": "uwu",
+    "cooldown": 7500,
+    "category": "fun"
   }
 ]

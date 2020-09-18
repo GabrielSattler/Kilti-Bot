@@ -46,14 +46,42 @@ const Random = async (min, max) => {
 module.exports = {
   ayuda: async msg => {
     const embed = new Discord.MessageEmbed().setTitle("Command List");
+    let base = []; let fun = []; let extra = []; let sound = [];
 
     for (let i = 0; i < cmdList.length; i++) {
-      embed.addField(
-        `${config.prefix} ${cmdList[i].name} / ${config.prefix} ${cmdList[i].short}`,
-        `${cmdList[i].description}`,
-        false
-      );
+      let cmd = '`' + `${cmdList[i].name} / ${cmdList[i].short} : ${cmdList[i].description}` + '`';
+      switch (cmdList[i].category) {
+        case 'fun':
+          fun += fun.length > 0 ? `\n${cmd}` : `${cmd}`;
+          break;
+        case 'extra':
+          extra += extra.length > 0 ? `\n${cmd}` : `${cmd}`;
+          break;
+        case 'sound':
+          sound += sound.length > 0 ? `\n${cmd}` : `${cmd}`;
+          break;
+        default:
+          base += base.length > 0 ? `\n${cmd}` : `$${cmd}`;
+          break;
+      }
     }
+
+    embed
+      .addField(
+        `Comandos meme`,
+        `${fun}`,
+        false
+      )
+      .addField(
+        ` Comandos de sonido `,
+        `${sound}`,
+        false
+      )
+      .addField(
+        `Comandos extras`,
+        extra,
+        false
+      )
 
     msg.channel.send({ embed });
     return false;
@@ -88,11 +116,11 @@ module.exports = {
     return false;
   },
 
-  AAA: async msg => {
+  aaa: async msg => {
     playSound(msg, 'viper.mp3');
   },
 
-  BUENASNOCHES: async msg => {
+  buenasnoches: async msg => {
     playSound(msg, 'buenasnoches.mp3');
   },
 
@@ -104,7 +132,7 @@ module.exports = {
     playSound(msg, 'impressive.mp3');
   },
 
-  NIUM: async msg => {
+  nium: async msg => {
     playSound(msg, 'gyrocopter.mp3');
   },
 
@@ -114,6 +142,10 @@ module.exports = {
 
   kulikitaka: async msg => {
     playSound(msg, "kulikitaka.mp3");
+  },
+
+  lacon: async msg => {
+    playSound(msg, "laconchadea.mp3");
   },
 
   votekilti: async msg => {
@@ -135,11 +167,11 @@ module.exports = {
       .setThumbnail(user.avatarURL())
 
     msg.channel.send(embed)
-      .then((msg) => {
+      .then(msg => {
         msg.react('✅')
-        msg.awaitReactions(filter, { max: 1, time: 7500, errors: ['time'] })
+        msg.awaitReactions(filter, { max: 2, time: 20000, errors: ['time'] })
           .then(collected => {
-            console.log(collected);
+            msg.channel.send(`https://i.imgur.com/RjInJnv.png`)
             msg.channel.send(`<@${user.id}> TIENE LA PICHULA CHICA`)
           })
           .catch(collected => console.log(`After 7.5 seconds, only ${collected.size} out of 2 reacted`))
@@ -161,5 +193,48 @@ module.exports = {
 
   source: async msg => {
     msg.channel.send(`El source esta en https://github.com/GabrielSattler/Kilti-Bot salu3`);
+  },
+
+  tpa: async msg => {
+    let user = msg.mentions.users.first() != null ? msg.mentions.users.first() : null;
+    if (user == null) {
+      msg.channel.send(`Tenes que etiquetar a un usuario kpo`);
+      return false;
+    }
+
+    const filter = (reaction, reactor) => {
+      let response = reaction.emoji.name === '✅' ? '✅' : '❌';
+      return response != null && reactor.username === user.username;
+    }
+
+    const embed = new Discord.MessageEmbed()
+      .setColor(0xffffff)
+      .setTitle(`Solicitud de TP`)
+      .addField(`${msg.author.username.toUpperCase()} ESTA POR MORIR Y QUIERE TELETRANSPORTARSE A VOS, ACEPTAS?`, `Apreta ✅ para aceptar o ❌ para rechazar`, false);
+
+    msg.channel.send(embed)
+      .then(nmsg => {
+        try {
+          nmsg.react('✅')
+            .then(() => nmsg.react('❌'))
+            .catch(err => console.log(err))
+        } catch (error) { console.log(error) }
+        nmsg.awaitReactions(filter, { max: 1, time: 15000, errors: ['time'] })
+          .then(collected => {
+            msg.channel.send(`https://tenor.com/35RL.gif`);
+            msg.channel.send(`${user.username} acepto el tp de ${msg.author.username}`);
+          }).catch(collected => {
+            msg.channel.send(`https://tenor.com/bmMqX.gif`);
+            msg.channel.send(`${user.username} no acepto el tp, llevando a la muerte de ${msg.author.username}`)
+          })
+      })
+  },
+
+  cuidado: async msg => {
+    msg.channel.send(`https://i.imgur.com/NcGXyEx.png`)
+  },
+
+  regalo: async msg => {
+    msg.channel.send(`https://i.imgur.com/X4NEtHi.png`)
   }
 };

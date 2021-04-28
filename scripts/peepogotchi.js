@@ -165,8 +165,8 @@ const paseo = async msg => {
   let tokenRoll = Random(0, 100);
 
   if (tokenRoll <= tokenChance) {
-    table.wallet.costumeToken++;
-
+    table.wallet.costumeToken += 1;
+    setData(table);
   }
 
   let res = await setStats(msg.author.id, paseo.thirst, paseo.hunger, 0, 0, paseo.happy, paseo.xp);

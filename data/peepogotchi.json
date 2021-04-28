@@ -1,0 +1,109 @@
+{
+  "paseo": [
+    {
+      "desc": "Paseas por un parque con tu peepo.",
+      "xp": 1,
+      "hunger": 10,
+      "thirst": 10,
+      "happy": 15
+    },
+    {
+      "desc": "Vas con tu peepo al cine.",
+      "xp": 1,
+      "hunger": 10,
+      "thirst": 15,
+      "happy": 10
+    },
+    {
+      "desc": "Salis a correr con tu peepo.",
+      "xp": 2,
+      "hunger": 10,
+      "thirst": 17,
+      "happy": 0
+    },
+    {
+      "desc": "Tomás una cerveza con tu peepo.",
+      "xp": 1,
+      "hunger": 7,
+      "thirst": 10,
+      "happy": 15
+    },
+    {
+      "desc": "Te jugas un doutita con tu peepo, no hay carry en tu equipo.",
+      "xp": 1,
+      "hunger": 0,
+      "thirst": 0,
+      "happy": -25
+    },
+    {
+      "desc": "Te jugas un doutita con tu peepo y carreas la partida.",
+      "xp": 3,
+      "hunger": 0,
+      "thirst": 0,
+      "happy": 25
+    },
+    {
+      "desc": "Vas a Wac Donals con tu peepo pero la hamburguesa estaba fria.",
+      "xp": 3,
+      "hunger": -20,
+      "thirst": -20,
+      "happy": -30
+    },
+    {
+      "desc": "Miras memes con tu peepo, estan muy frescos.",
+      "xp": 1,
+      "hunger": 0,
+      "thirst": 0,
+      "happy": 15
+    },
+    {
+      "desc": "Miras memes con tu peepo, pero son todos reposts.",
+      "xp": 1,
+      "hunger": 0,
+      "thirst": 0,
+      "happy": -15
+    },
+    {
+      "desc": "Vas a Burger Queen y la hamburguesa esta muy buena.",
+      "xp": 2,
+      "hunger": -25,
+      "thirst": -25,
+      "happy": 30
+    },
+    {
+      "desc": "Jugas una partida de Underwatch 3 con tu peepo, te toca con 4 platas.",
+      "xp": 1,
+      "hunger": 10,
+      "thirst": 5,
+      "happy": -10
+    },
+    {
+      "desc": "Jugas una partida de Underwatch 3 con tu peepo, te toca con 2 top 500.",
+      "xp": 2,
+      "hunger": 5,
+      "thirst": 10,
+      "happy": 10
+    },
+    {
+      "desc": "Jugas una partida de League of Legendaries con tu peepo, tu hc es un inútil.",
+      "xp": 1,
+      "hunger": 10,
+      "thirst": 5,
+      "happy": -30
+    },
+    {
+      "desc": "Jugas una partida de League of Legendaries y tu peepo se haces 2 pentas.",
+      "xp": 3,
+      "hunger": 5,
+      "thirst": 10,
+      "happy": 30
+    },
+    {
+      "desc": "Jugas al mirror con tu peepo, es una experiencia _excitante_.",
+      "xp": 5,
+      "hunger": 0,
+      "thirst": 20,
+      "happy": 50
+    }
+  ]
+}

@@ -4,9 +4,13 @@ const config = require("../config.json");
 const fs = require("fs");
 
 const ytdl = require('ytdl-core');
+const SQLite3 = require('better-sqlite3');
+const sql = new SQLite3('./db/player_data.sqlite')
 
-const cmdList = require('./commands.json');
-const ff = require('./ff.json')
+const cmdList = require('../data/commands.json');
+const ff = require('../data/ff.json')
+
+const pp = require('./peepogotchi');
 
 const playSound = async (msg, audio) => {
   if (audio == null) return false;
@@ -46,7 +50,7 @@ const Random = async (min, max) => {
 module.exports = {
   ayuda: async msg => {
     const embed = new Discord.MessageEmbed().setTitle("Command List");
-    let base = []; let fun = []; let extra = []; let sound = [];
+    let base = []; let fun = []; let extra = []; let sound = []; let peepo = [];
 
     for (let i = 0; i < cmdList.length; i++) {
       let cmd = '`' + `${cmdList[i].name} / ${cmdList[i].short} : ${cmdList[i].description}` + '`';
@@ -60,6 +64,11 @@ module.exports = {
         case 'sound':
           sound += sound.length > 0 ? `\n${cmd}` : `${cmd}`;
           break;
+        case 'peepo':
+          peepo += peepo.length > 0 ? `\n${cmd}` : `${cmd}`;
+          break;
+        case 'admin':
+          break;
         default:
           base += base.length > 0 ? `\n${cmd}` : `$${cmd}`;
           break;
@@ -67,6 +76,11 @@ module.exports = {
     }
 
     embed
+      .addField(
+        `Comandos Peepogotchi`,
+        `${peepo}`,
+        false
+      )
       .addField(
         `Comandos meme`,
         `${fun}`,
@@ -183,8 +197,8 @@ module.exports = {
   fanfi: async msg => {
     let ffID = await Random(0, ff.length - 1);
     let fraseID = await Random(0, ff[ffID].length);
-    console.log(`${ffID} : ${fraseID}`);
-    let text = await ff[ffID][fraseID].frase;
+
+    let text = ff[ffID][fraseID].frase;
 
     let message = `**Geilty Fanfic** *Tomo ${ffID}:${fraseID}*\n> ${text}\n*By zafire 공산#8600*`;
 
@@ -236,5 +250,45 @@ module.exports = {
 
   regalo: async msg => {
     msg.channel.send(`https://i.imgur.com/X4NEtHi.png`)
+  },
+
+  nombrar: async (msg, args) => {
+    pp.adoptar(msg, args);
+  },
+
+  perfil: async msg => {
+    pp.peepo(msg);
+  },
+
+  paseo: async msg => {
+    pp.paseo(msg);
+  },
+
+  daily: async msg => {
+    pp.daily(msg);
+  },
+
+  log: async msg => {
+    pp.log(msg);
+  },
+
+  shop: async (msg, args) => {
+    pp.shop(msg, args);
+  },
+
+  buy: async (msg, args) => {
+    pp.buy(msg, args);
+  },
+
+  inv: async (msg, args) => {
+    pp.viewInv(msg, args);
+  },
+
+  use: async (msg, args) => {
+    pp.use(msg, args)
+  },
+
+  lootbox: async (msg, args) => {
+    pp.lootbox(msg, args);
   }
 };

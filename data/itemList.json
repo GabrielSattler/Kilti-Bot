@@ -1,0 +1,86 @@
+{
+  "Food": {
+    "chocoarroz": {
+      "name": "Chocoarroz",
+      "hunger": -5,
+      "buyCost": 10,
+      "sellCost": 2,
+      "emoji": "🍘",
+      "rarity": "common"
+    },
+    "sandwich": {
+      "name": "Sandwich",
+      "hunger": -10,
+      "buyCost": 23,
+      "sellCost": 15,
+      "emoji": "🥪",
+      "rarity": "common"
+    },
+    "hamburguesa": {
+      "name": "Hamburguesa",
+      "hunger": -25,
+      "buyCost": 55,
+      "sellCost": 25,
+      "emoji": "🍔",
+      "rarity": "common"
+    },
+    "pizza": {
+      "name": "Pizza",
+      "hunger": -50,
+      "buyCost": 125,
+      "sellCost": 60,
+      "emoji": "🍕",
+      "rarity": "common"
+    },
+    "carne": {
+      "name": "Carne",
+      "hunger": -100,
+      "buyCost": 300,
+      "sellCost": 150,
+      "emoji": "🍖",
+      "rarity": "common"
+    }
+  },
+  "Drink": {
+    "gaseosa": {
+      "name": "Gaseosa",
+      "thirst": -5,
+      "buyCost": 10,
+      "sellCost": 2,
+      "emoji": "🥤",
+      "rarity": "common"
+    },
+    "té": {
+      "name": "Té",
+      "thirst": -10,
+      "buyCost": 23,
+      "sellCost": 15,
+      "emoji": "🍵",
+      "rarity": "common"
+    },
+    "café": {
+      "name": "Café",
+      "thirst": -25,
+      "buyCost": 55,
+      "sellCost": 25,
+      "emoji": "☕",
+      "rarity": "common"
+    },
+    "vaso de leche": {
+      "name": "Vaso de leche",
+      "thirst": -50,
+      "buyCost": 125,
+      "sellCost": 60,
+      "emoji": "🥛",
+      "rarity": "common"
+    },
+    "whisky": {
+      "name": "Whisky",
+      "thirst": -100,
+      "buyCost": 300,
+      "sellCost": 150,
+      "emoji": "🥃",
+      "rarity": "common"
+    }
+  }
+}

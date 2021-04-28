@@ -163,8 +163,10 @@ const paseo = async msg => {
 
   let tokenChance = 5;
   let tokenRoll = Random(0, 100);
+  let token = "0";
 
   if (tokenRoll <= tokenChance) {
+    token = "+1";
     table.wallet.costumeToken += 1;
     setData(table);
   }
@@ -180,7 +182,9 @@ const paseo = async msg => {
       { name: `\u200b`, value: `\u200b`, inline: true },
       { name: `🍖 Hambre`, value: `${paseo.hunger}`, inline: true },
       { name: `🥛 Sed`, value: `${paseo.thirst}`, inline: true },
-      { name: `\u200b`, value: `\u200b`, inline: true }
+      { name: `\u200b`, value: `\u200b`, inline: true },
+      { name: `💰 Dinero`, value: `${paseo.money}`, inline: true },
+      { name: `📀 Tokens`, value: `${token}`, inline: true }
     )
 
   msg.channel.send(embed);

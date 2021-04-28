@@ -60,8 +60,8 @@ bot.on("message", async message => {
       table = {
         id: `${message.author.id}`,
         wallet: encodeURI(JSON.stringify({
-          coins: 0,
-          costumeToken: 5
+          coins: 50,
+          costumeToken: 0
         })),
         inv: encodeURI(JSON.stringify([])),
         pet: encodeURI(JSON.stringify({

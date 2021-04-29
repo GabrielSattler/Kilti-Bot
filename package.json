@@ -1,7 +1,7 @@
 {
-  "name": "samplejson",
-  "version": "1.0.0",
-  "description": "A sample package.json",
+  "name": "Kilti-Bot Beta",
+  "version": "5.0",
+  "description": "Discord bot beta branch",
   "main": "node index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -28,7 +28,6 @@
     "ffmpeg": "^0.0.4",
     "ffmpeg-static": "^4.2.7",
     "fluent-ffmpeg": "^2.1.2",
-    "node-opus": "^0.3.3",
     "ytdl-core": "^3.2.2"
   }
 }

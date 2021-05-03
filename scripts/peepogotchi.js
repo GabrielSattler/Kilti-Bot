@@ -158,6 +158,27 @@ const paseo = async msg => {
   if (!table) { return; }
   if (table.pet.name === "Unnamed") { msg.channel.send(`${msg.author.username}, primero tenes que darle un nombre a tu peepo con _k nombrar <nombre>_.`); return; }
 
+  let warn = 'No podes salir de paseo, tu mascota';
+  let cancel = false;
+
+  if(table.pet.hunger >= 75){
+    warn += '\ntiene hambre';
+    cancel = true;
+  }
+  if(table.pet.thirst >= 75){
+    warn += '\ntiene sed'
+    cancel = true;
+  }
+  //if(table.pet.health < 10){
+  //  warn += '\nesta demasiado herida'
+  //  cancel = true;
+  //}
+
+  if(cancel){
+    msg.channel.send(warn);
+    return;
+  }
+
   let roll = await Random(0, data.paseo.length - 1);
   const paseo = data.paseo[roll];
 
@@ -168,9 +189,11 @@ const paseo = async msg => {
   if (tokenRoll <= tokenChance) {
     token = "+1";
     table.wallet.costumeToken += 1;
-    setData(table);
   }
 
+  table.stats.paseoTotal++;
+
+  let data = await setData(table);
   let res = await setStats(msg.author.id, paseo.thirst, paseo.hunger, 0, 0, paseo.happy, paseo.xp);
 
   const embed = new Discord.MessageEmbed()
@@ -231,7 +254,7 @@ const shop = async (msg, args) => {
 
     msg.channel.send(embed);
   }
-  else if (args[0] === 'food') {
+  else if (args[0].toString().toLowerCase() === 'food') {
 
     for (let key in items.Food) {
       let item = items.Food[key];
@@ -246,7 +269,7 @@ const shop = async (msg, args) => {
     msg.channel.send(embed);
     return;
   }
-  else if (args[0] === 'drinks') {
+  else if (args[0].toString().toLowerCase() === 'drinks') {
 
     for (let key in items.Drink) {
       let item = items.Drink[key];
@@ -270,9 +293,22 @@ const buy = async (msg, item) => {
     return;
   }
 
+  let tokenCost = 250;
+
   console.log(item)
 
   let table = await getData(msg.author.id);
+
+  if(item.to.toLowerCase() === 'token'){
+    if(table.wallet.coins >= tokenCost){
+      table.wallet.coins -= tokenCost;
+      table.wallet.costumeToken++;
+
+      msg.channel.send(`Compraste un token por $250`);
+
+      return;
+    }
+  }
 
   let boughtItem;
   let name;
@@ -374,7 +410,7 @@ const viewInv = async (msg, page = 0) => {
     console.log(table.inv[i]);
     if (table.inv[i].type == 'Food') { desc = `Recupera 🍖${items.Food[table.inv[i].name.toLowerCase()].hunger}` }
     if (table.inv[i].type == 'Drink') { desc = `Recupera 🥛${items.Drink[table.inv[i].name.toLowerCase()].thirst}` }
-    if (table.inv[i].type == 'Costume') { desc = `Disfraz` }
+    if (table.inv[i].type == 'Costume') { desc = `Equipate este disfraz con **k use ${table.inv[i].name}**` }
     itemList.push({ name: `${table.inv[i].name} x${table.inv[i].stacks}`, value: desc, inline: false })
   }
 
@@ -514,6 +550,8 @@ const lootbox = async msg => {
     table.wallet.costumeToken -= 1;
 
     setData(table);
+
+    msg.channel.send(`Tu caja te dio un ${item.name}! Para ponerte el disfraz usa **k use ${item.name}**`)
   }
   else {
     msg.channel.send(`${msg.author.username}, no tienes suficientes tokens para abrir una caja.`)
@@ -527,6 +565,14 @@ const log = async msg => {
   let fecha = new Date();
   console.log(fecha.getDate());
   console.log(data);
+}
+
+const slots = async msg =>  {
+  table = getData(msg.author.id);
+
+  let spinCost = 10;
+  let multiplier = 1;
+
 }
 
 module.exports = { adoptar, peepo, paseo, daily, log, shop, buy, viewInv, use, lootbox };

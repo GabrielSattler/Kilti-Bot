@@ -30,18 +30,17 @@ bot.on("ready", () => {
   const userTable = sql.prepare("SELECT count(*) FROM sqlite_master WHERE type='table' AND name = 'player_data';").get();
 
   if (!userTable['count(*)']) {
-    sql.prepare("CREATE TABLE player_data (id TEXT PRIMARY KEY, wallet TEXT, inv TEXT, pet TEXT);").run();
+    sql.prepare("CREATE TABLE player_data (id TEXT PRIMARY KEY, wallet TEXT, inv TEXT, pet TEXT, stats TEXT);").run();
     sql.prepare("CREATE UNIQUE INDEX idx_scores_id ON player_data (id);").run();
     sql.pragma("synchronous = 1"); sql.pragma("journal_mode = wal");
   }
 
-  console.log(chalk.gray("Cargando tablas de DB."));
-
   bot.getData = sql.prepare("SELECT * FROM player_data WHERE id = ?");
-  bot.setData = sql.prepare("INSERT OR REPLACE INTO player_data (id, wallet, inv, pet) VALUES (@id, @wallet, @inv, @pet);");
+  bot.setData = sql.prepare("INSERT OR REPLACE INTO player_data (id, wallet, inv, pet, stats) VALUES (@id, @wallet, @inv, @pet, @stats);");
   console.log(chalk.gray("Cargadas las tablas de DB"))
 
-  console.log(chalk.blue('db   dD d888888b db      d888888b d888888b d8888b.  .d88b.  d888888b\n' +
+  console.log(chalk.blue(
+    'db   dD d888888b db      d888888b d888888b d8888b.  .d88b.  d888888b\n' +
     '88 ,8P     88    88       ~~88~~     88    88   8D .8P  Y8.  ~~88~~\n' +
     '88,8P      88    88         88       88    88oooY  88    88    88\n' +
     '88 8b      88    88         88       88    88~~~b. 88    88    88\n' +
@@ -77,6 +76,11 @@ bot.on("message", async message => {
           happy: 50,
           daily: '0000',
           costume: null
+        })),
+        status: encodeURI(JSON.stringify({
+          paseos: 0,
+          dineroTotal: 0,
+          tokensTotal: 0
         }))
       }
     }

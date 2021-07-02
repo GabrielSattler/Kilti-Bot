@@ -1,6 +1,6 @@
 {
-  "name": "Kilti-Bot Beta",
-  "version": "5.0",
+  "name": "Kilti-Bot-Beta",
+  "version": "5.0.0",
   "description": "Discord bot beta branch",
   "main": "node index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   "dependencies": {
     "@discordjs/opus": "github:discordjs/opus",
     "chalk": "^4.1.1",
+    "discord-buttons": "^3.0.1",
     "discord.js": "^12.3.1",
     "enmap": "^5.7.0",
     "ffmpeg": "^0.0.4",

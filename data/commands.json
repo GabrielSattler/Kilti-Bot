@@ -112,34 +112,6 @@
     "category": "fun"
   },
   {
-    "name": "nombrar",
-    "short": "n",
-    "description": "Adopta un peepo y nombralo",
-    "cooldown": 0,
-    "category": "peepo"
-  },
-  {
-    "name": "perfil",
-    "short": "p",
-    "description": "Ver el estado de tu peepo",
-    "cooldown": 0,
-    "category": "peepo"
-  },
-  {
-    "name": "paseo",
-    "short": "w",
-    "description": "Salir con tu peepo de paseo",
-    "cooldown": 0,
-    "category": "peepo"
-  },
-  {
-    "name": "daily",
-    "short": "diario",
-    "description": "Reclamar tu pago diario",
-    "cooldown": 0,
-    "category": "peepo"
-  },
-  {
     "name": "log",
     "short": "log",
     "description": "",
@@ -147,38 +119,17 @@
     "category": "admin"
   },
   {
-    "name": "shop",
-    "short": "$",
-    "description": "Ver la tienda de items",
-    "cooldown": 0,
-    "category": "peepo"
+    "name": "chupamelapija",
+    "short": "pija",
+    "description": "JAJAJAJAJAJAJAJA",
+    "cooldown": 7500,
+    "category": "sound"
   },
   {
-    "name": "buy",
-    "short": "comprar",
-    "description": "Comprar un item",
-    "cooldown": 0,
-    "category": "peepo"
-  },
-  {
-    "name": "inv",
-    "short": "i",
-    "description": "Ver tu inventario",
-    "cooldown": 0,
-    "category": "peepo"
-  },
-  {
-    "name": "use",
-    "short": "usar",
-    "description": "Usar un item",
-    "cooldown": 0,
-    "category": "peepo"
-  },
-  {
-    "name": "lootbox",
-    "short": "caja",
-    "description": "Usar un token de disfraz para obtener uno al azar.",
-    "cooldown": 0,
-    "category": "peepo"
+    "name": "locademierda",
+    "short": "loca",
+    "description": "AAAAAAAAAAAAAAAAAA",
+    "cooldown": 7500,
+    "category": "sound"
   }
 ]

@@ -110,5 +110,26 @@
     "description": "uwu",
     "cooldown": 7500,
     "category": "fun"
+  },
+  {
+    "name": "log",
+    "short": "log",
+    "description": "",
+    "cooldown": 0,
+    "category": "admin"
+  },
+  {
+    "name": "chupamelapija",
+    "short": "pija",
+    "description": "JAJAJAJAJAJAJAJA",
+    "cooldown": 7500,
+    "category": "sound"
+  },
+  {
+    "name": "locademierda",
+    "short": "loca",
+    "description": "AAAAAAAAAAAAAAAAAA",
+    "cooldown": 7500,
+    "category": "sound"
   }
 ]

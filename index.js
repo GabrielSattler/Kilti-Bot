@@ -3,7 +3,16 @@ const bot = new Discord.Client();
 
 const config = require("./config.json");
 const cmdList = require("./data/commands.json");
-const commands = require("./data/commands.js");
+const commands = require("./scripts/commands.js");
+
+const discord = require('discord.js'); //Define the discord.js module
+const client = new discord.Client(); //Creating discord.js client (constructor)
+require('discord-buttons')(client); //Starting the discord-buttons class
+
+const chalk = require("chalk");
+const error = chalk.bold.red;
+const warning = chalk.hex('#FFA500');
+const success = chalk.bold.green;
 
 const recentlyCalled = new Set();
 
@@ -18,23 +27,41 @@ bot.on("ready", () => {
       url: "https://theuselessweb.com/"
     }
   })
-  console.log("Done loading v4");
+
+  console.log(chalk.blue(
+    'db   dD d888888b db      d888888b d888888b d8888b.  .d88b.  d888888b\n' +
+    '88 ,8P     88    88       ~~88~~     88    88   8D .8P  Y8.  ~~88~~\n' +
+    '88,8P      88    88         88       88    88oooY  88    88    88\n' +
+    '88 8b      88    88         88       88    88~~~b. 88    88    88\n' +
+    '88  88.   .88.   88booo.    88      .88.   88   8D  8b  d8     88\n' +
+    'YP   YD Y888888P Y88888P    YP    Y888888P Y8888P    Y88P      YP'));
+  console.log(success(`Cargado KiltiBot v5, Peepo Edition!`));
 });
 
 bot.on("message", async message => {
   if (message.author.bot || !message.guild || message.content.toLowerCase().indexOf(config.prefix) !== 0) return;
 
-  let args = message.content.slice(config.prefix.length).trim().split(' ');
+  let args = message.content.slice(config.prefix.length).trim().split(/ (?=(?:(?:[^"']*"){2})*[^"']*$)/);
   let cmd = args.shift();
 
   let d = new Date();
-  console.log(
-    `[${d.getDay()}/${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}] User ${message.author.tag} sent a request for "${cmd}" with "${args}" arguments.`
-  );
+  console.log(`[${d.getDay()}/${d.getDate()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}] User ${message.author.tag} sent a request for "${cmd}" with "${args}" arguments.`);
 
-  if (cmd != null || cmd != "") {
+  const kiltyList = ['kilti', 'keilty', 'kilty', 'keilti']
+
+  for (let i = 0; i < kiltyList.length; i++) {
+    if (message.toString().toLowerCase() == kiltyList[i]) {
+      console.log(kiltyList[i]);
+      message.react(
+        "<:cc:426195792081190932>"
+      )
+    }
+  }
+
+  if (cmd != null) {
     checkCommand(cmd, message, args);
-  } else {
+  }
+  else {
     console.log("Problema con comando");
   }
 });
@@ -42,7 +69,7 @@ bot.on("message", async message => {
 const checkCommand = async (cmd, msg, args = "") => {
   try {
     let command = cmdList.find(cm => cm.name === cmd) != null ? cmdList.find(cm => cm.name === cmd) : cmdList.find(cm => cm.short === cmd);
-    if (command === undefined) { return }
+    if (command === undefined) { msg.channel.send('Ese comando no existe.'); return }
 
     if (!recentlyCalled.has(`${msg.author.id}:${command.name}:${command.short}`)) {
       recentlyCalled.add(`${msg.author.id}:${command.name}:${command.short}`);

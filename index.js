@@ -60,11 +60,16 @@ bot.on("message", async (message) => {
 
   const kiltyList = ["kilti", "keilty", "kilty", "keilti"];
   const quien = ["quien", "kien", "quien?", "kien?", "quiente"];
+  const lmessage = message.toString().toLowerCase();
 
   for (let i = 0; i < kiltyList.length; i++) {
-    if (message.toString().toLowerCase() == kiltyList[i]) {
+    if (lmessage == kiltyList[i]) {
       message.react("<:cc:426195792081190932>");
-    } else if (message.toString().toLowerCase() == quien[i]) {
+    }
+  }
+
+  for (let i = 0; i < quien.length; i++) {
+    if (lmessage == quien[i]) {
       message.channel.send("Yo pregunte hijo de puta");
     }
   }

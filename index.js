@@ -26,7 +26,7 @@ bot.on("ready", () => {
 
   console.log(
     chalk.blue(
-        "db   dD d888888b db      d888888b d888888b d8888b.  .d88b.  d888888b\n" +
+      "db   dD d888888b db      d888888b d888888b d8888b.  .d88b.  d888888b\n" +
         "88 ,8P     88    88         88       88    88   8D .8P  Y8.  ~~88~~\n" +
         "88,8P      88    88         88       88    88oooY  88    88    88\n" +
         "88 8b      88    88         88       88    88~~~b. 88    88    88\n" +
@@ -59,11 +59,13 @@ bot.on("message", async (message) => {
   );
 
   const kiltyList = ["kilti", "keilty", "kilty", "keilti"];
+  const quien = ["quien", "kien", "quien?", "kien?", "quiente"];
 
   for (let i = 0; i < kiltyList.length; i++) {
     if (message.toString().toLowerCase() == kiltyList[i]) {
-      console.log(kiltyList[i]);
       message.react("<:cc:426195792081190932>");
+    } else if (message.toString().toLowerCase() == quien[i]) {
+      message.channel.send("Yo pregunte hijo de puta");
     }
   }
 

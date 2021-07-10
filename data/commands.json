@@ -131,5 +131,12 @@
     "description": "AAAAAAAAAAAAAAAAAA",
     "cooldown": 7500,
     "category": "sound"
+  },
+  {
+    "name": "boliviano",
+    "short": "bolita",
+    "description": "b o l i v i a n o",
+    "cooldown": 7500,
+    "category": "sound"
   }
 ]

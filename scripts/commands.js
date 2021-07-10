@@ -269,4 +269,8 @@ module.exports = {
   locademierda: async (msg) => {
     playSound(msg, "locamierda.mp3");
   },
+
+  boliviano: async (msg) => {
+    playSound(msg, "boliviano.mp3");
+  },
 };
